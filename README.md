@@ -1,5 +1,5 @@
 # demotivator-bot
-Превращает картинку в демотиватор
+Превращает картинку в демотиватор. \
 Используется шрифт от truetype, так что если у вас его него, установите:
 ```
 sudo apt install ttf-mscorefonts-installer
