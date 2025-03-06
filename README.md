@@ -5,6 +5,6 @@
 sudo apt install ttf-mscorefonts-installer
 sudo fc-cache -f
 ```
-TODO:
+DONE:
 - make black frame and text size relative from image size
 - make lower text to be smaller size
