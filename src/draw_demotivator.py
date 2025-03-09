@@ -6,22 +6,25 @@ def make_dem(img, text, ttf="arial.ttf"):
     image = Image.open(io.BytesIO(img))
     width, height = image.size
 
-    black_border = width // 15
+    longer_part = width
+    if height > width:
+        longer_part = height
+    black_border = longer_part // 15
     white_border = 1
-    font_size = width // 12
-    line_spacing = font_size // 6 # addition between lines
+    font_size = (height + width) // 24
+    line_spacing = font_size // 6 # extra space between lines
 
     
     # create white 1px frame
     l_width = width + 2 
-    l_heigth = height + 2
-    light_frame = Image.new("RGB", (l_width, l_heigth), "white")
+    l_height = height + 2
+    light_frame = Image.new("RGB", (l_width, l_height), "white")
     light_frame.paste(image, (1, 1))
     draw = ImageDraw.Draw(light_frame)
 
     # create black frame
     bf_width = l_width + 2 * black_border 
-    bf_height = l_heigth + 2 * black_border + int(width // 5) # Extra space below
+    bf_height = l_height + 2 * black_border + int(longer_part // 5) # Extra space below
     black_framed = Image.new("RGB", (bf_width, bf_height), "black")
     black_framed.paste(light_frame, (black_border, black_border))
     draw = ImageDraw.Draw(black_framed)
